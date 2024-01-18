@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <span>Total clicks: 0</span>
-    <button id="btn">Click me</button>
+    <div id="root"></div>
   </body>
+  <script src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"></script>
   <script>
-    let counter = 0;
+    const root = document.getElementById('root');
+    const h3 = React.createElement(
+      'h3', //tag
+      {
+        id: 'title', //속성 추가 방법
+        onMouseEnter: () => console.log('mouse enter.'), //이벤트 속성 추가 하는 방법
+      }, //property
+      "Hello I'am a h3"
+    ); //content
+    const btn = React.createElement(
+      'button',
+      {
+        style: {
+          color: 'blue',
+        },
+        onClick: () => console.log("I'm clicked."),
+      },
+      'Click me'
+    );
+    const container = React.createElement('div', null, [h3, btn]);
 
-    const button = document.getElementById('btn');
-    const span = document.querySelector('span');
-    function handleClick() {
-      counter = counter + 1;
-      console.log(counter);
-      span.innerHTML = 'Total clicks: ' + counter;
-    }
-    button.addEventListener('click', handleClick);
+    ReactDOM.createRoot(root).render(container); //react 18 version
   </script>
 </html>
