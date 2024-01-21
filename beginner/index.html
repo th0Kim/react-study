@@ -9,12 +9,14 @@
   <script type="text/babel">
     const root = document.getElementById('root');
 
-    const Title = (
-      <h3 id="title" onMouseEnter={() => console.log('mouse enter.')}>
-        Hello I'am a h3
-      </h3>
-    );
-    const Button = (
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log('mouse enter.')}>
+          Hello I'am a h3
+        </h3>
+      );
+    }
+    const Button = () => (
       <button
         style={{
           color: 'blue',
@@ -24,6 +26,14 @@
         Click me
       </button>
     );
+
+    const Container = (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+
     /*
     const h3 = React.createElement(
       'h3', //tag
@@ -43,9 +53,9 @@
       },
       'Click me'
     );
-    */
     const container = React.createElement('div', null, [Title, Button]);
+    */
 
-    ReactDOM.createRoot(root).render(container); //react 18 version
+    ReactDOM.createRoot(root).render(Container); //react 18 version
   </script>
 </html>
