@@ -8,8 +8,23 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById('root');
+    function App() {
+      // const data = React.useState();
+      // console.log(data); // React.useState()가 [undefined, f] -> undefined가 data고 f는 사용 할 수 있는 함수
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        // setCounter(counter + 1);
+        setCounter((current) => current + 1); //예상치 못하게 counter의 초기값이 변경 될 경우를 대비
+      };
+      return (
+        <div>
+          <h3>Hello I'am a h3 {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
 
-    function Title() {
+    /* function Title() {
       return (
         <h3 id="title" onMouseEnter={() => console.log('mouse enter.')}>
           Hello I'am a h3
@@ -32,7 +47,7 @@
         <Title />
         <Button />
       </div>
-    );
+    );*/
 
     /*
     const h3 = React.createElement(
@@ -56,6 +71,6 @@
     const container = React.createElement('div', null, [Title, Button]);
     */
 
-    ReactDOM.createRoot(root).render(Container); //react 18 version
+    ReactDOM.createRoot(root).render(<App />); //react 18 version
   </script>
 </html>
